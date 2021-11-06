@@ -4,6 +4,7 @@ import {getFilmById} from '../../API/TMDBApi'
 import Layout from "../../components/Layout/Layout";
 import styled from 'styled-components'
 import Poster from '../../components/Poster/Poster'
+import {Movie} from '../../types/Movie'
 
 const MainContainer = styled.div `
   display: flex;
@@ -16,17 +17,9 @@ const PosterContainer = styled.div `
 
 `
 
-type Movie = {
-  title: string
-  overview: string
-  vote_average: number
-  id: number
-  poster_path: string
-}
-
 export default function MovieDetail(){
   const params =  useParams()
-  const [movie, setMovie] = useState<Movie | null>()
+  const [movie, setMovie] = useState<Movie | undefined>()
 
   useEffect(() =>{
     loadMovieById()
@@ -37,15 +30,15 @@ export default function MovieDetail(){
       getFilmById(params.movieId).then((data:Movie) => setMovie(data));
     }
   }
-  
-  return(
+
+  return movie ?(
     <>
       <Layout/>
       <MainContainer>
         <DescriptionContainer>
-          <p>{movie?.title}</p>
-          <p>{movie?.overview}</p>
-          <p>{movie?.vote_average} / 10</p>
+          <p>{movie.title}</p>
+          <p>{movie.overview}</p>
+          <p>{movie.vote_average} / 10</p>
         </DescriptionContainer>
         <PosterContainer>
           <Poster data={movie}/>
@@ -53,5 +46,5 @@ export default function MovieDetail(){
         <PosterContainer/>
       </MainContainer>
     </>
-  )
+  ) : null
 }
