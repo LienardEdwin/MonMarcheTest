@@ -1,9 +1,30 @@
-import { useParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import { useParams  } from "react-router-dom";
+import {getFilmById} from '../../API/TMDBApi'
+import Layout from "../../components/Layout/Layout";
+import styled from 'styled-components'
+
 
 export default function Movie(){
-  let params = useParams();
+  const params =  useParams()
+  const [movie, setMovie] = useState([])
+
+
+  useEffect(() =>{
+    loadMovieById()
+  }, [])
+
+  function loadMovieById(){
+    if(params.movieId){
+      getFilmById(params.movieId).then(data => setMovie(data));
+    }
+  }
 
   return(
-    <h1>je suis le movie</h1>
+    <>
+      <Layout/>
+        <h1>{params.movieId}</h1>
+    </>
+
   )
 }

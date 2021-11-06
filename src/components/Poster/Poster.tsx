@@ -12,7 +12,6 @@ type Props = {
 
 function Poster(props:Props){
   const {data} = props
-  console.log(data)
 
   const Poster = styled.img `
     height: 200px;
@@ -21,7 +20,7 @@ function Poster(props:Props){
   `
 
   return(
-    <Link to={`/movie/${data.id}`}>
+    <Link to={`/movie/${data.id}`} key={data.id}>
       <Poster src={'https://image.tmdb.org/t/p/w300' + data.poster_path} alt={data.title} title={data.title}/>
     </Link>
   )

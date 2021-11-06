@@ -8,6 +8,7 @@ const Header = styled.div `
 
 const Text = styled.h1 `
   color: #FFFFFF;
+  text-align: center;
 `
 
 function Layout(){

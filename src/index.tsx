@@ -11,9 +11,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="movie" element={<Movie />}>
-          <Route path=":movieId" element={<Movie />}/>
-        </Route>
+        <Route path="movie/:movieId" element={<Movie />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
