@@ -18,11 +18,15 @@ const PosterContainer = styled.div `
 
 type Movie = {
   title: string
+  overview: string
+  vote_average: number
+  id: number
+  poster_path: string
 }
 
 export default function MovieDetail(){
   const params =  useParams()
-  const [movie, setMovie] = useState<Movie | any>([])
+  const [movie, setMovie] = useState<Movie | null>()
 
   useEffect(() =>{
     loadMovieById()
@@ -30,18 +34,18 @@ export default function MovieDetail(){
 
   function loadMovieById(){
     if(params.movieId){
-      getFilmById(params.movieId).then(data => setMovie(data));
+      getFilmById(params.movieId).then((data:Movie) => setMovie(data));
     }
   }
-
+  
   return(
     <>
       <Layout/>
       <MainContainer>
         <DescriptionContainer>
-          <p>{movie.title}</p>
-          <p>{movie.overview}</p>
-          <p>{movie.vote_average} / 10</p>
+          <p>{movie?.title}</p>
+          <p>{movie?.overview}</p>
+          <p>{movie?.vote_average} / 10</p>
         </DescriptionContainer>
         <PosterContainer>
           <Poster data={movie}/>
