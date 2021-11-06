@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 type Props = {
   data: {
+    id: number
     poster_path: string
     title: string
   }
@@ -10,6 +12,7 @@ type Props = {
 
 function Poster(props:Props){
   const {data} = props
+  console.log(data)
 
   const Poster = styled.img `
     height: 200px;
@@ -18,7 +21,9 @@ function Poster(props:Props){
   `
 
   return(
-    <Poster src={'https://image.tmdb.org/t/p/w300' + data.poster_path} alt={data.title} title={data.title}/>
+    <Link to={`/movie/${data.id}`}>
+      <Poster src={'https://image.tmdb.org/t/p/w300' + data.poster_path} alt={data.title} title={data.title}/>
+    </Link>
   )
 }
 

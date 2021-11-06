@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Poster from "./components/Poster/Poster"
 
 type Movies = {
+  id: number,
   poster_path: string
   title: string
 }
