@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Movie from './pages/movie/movie'
+import Movie from './pages/moviedetail/moviedetail'
 import reportWebVitals from './reportWebVitals';
 import {  BrowserRouter, Routes, Route } from 'react-router-dom'
 

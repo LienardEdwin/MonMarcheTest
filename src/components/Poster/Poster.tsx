@@ -10,18 +10,18 @@ type Props = {
   }
 }
 
-function Poster(props:Props){
-  const {data} = props
-
-  const Poster = styled.img `
+const ImgMovie = styled.img `
     height: 200px;
     width: 200px;
     padding: 10px;
   `
 
+function Poster(props:Props){
+  const {data} = props
+
   return(
     <Link to={`/movie/${data.id}`} key={data.id}>
-      <Poster src={'https://image.tmdb.org/t/p/w300' + data.poster_path} alt={data.title} title={data.title}/>
+      <ImgMovie src={'https://image.tmdb.org/t/p/w300' + data.poster_path} alt={data.title} title={data.title}/>
     </Link>
   )
 }

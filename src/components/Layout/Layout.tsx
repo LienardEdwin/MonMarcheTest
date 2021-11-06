@@ -1,9 +1,10 @@
-import React from 'react'
 import styled from 'styled-components'
+import { Link } from "react-router-dom"
+
 
 const Header = styled.div `
-  height: 50px;
   background-color: #60A5FA;
+  display: flex;
 `
 
 const Text = styled.h1 `
@@ -11,10 +12,30 @@ const Text = styled.h1 `
   text-align: center;
 `
 
+const BackButton = styled.button `
+`
+const TitleContainer = styled.div `
+  display: flex;
+  flex: 1;
+  justify-content: center;
+`
+
+const ContainerButton = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 function Layout(){
   return(
     <Header>
-      <Text>Movies</Text>
+      <ContainerButton>
+        <Link to={'/'}>
+         <BackButton>Retour</BackButton>
+        </Link>
+      </ContainerButton>
+      <TitleContainer>
+        <Text>Movies</Text>
+      </TitleContainer>
     </Header>
 
   )
