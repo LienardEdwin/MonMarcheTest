@@ -16,7 +16,6 @@ const globalStyle = createGlobalStyle`
     --light-text: black;
 
   }
-
   * {
     margin: 0;
     padding: 0;
@@ -34,12 +33,15 @@ const globalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
   }
-
   h1 {
     font-size: 3.375rem;
+  }
+  p{
     color: ${({ theme }: GlobalThemeProps) => theme.text};
   }
-
+  span{
+    color: #FFFF
+  }
 `;
 
 export default withTheme(globalStyle);

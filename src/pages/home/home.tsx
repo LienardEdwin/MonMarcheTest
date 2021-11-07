@@ -17,10 +17,10 @@ const TextInput = styled.input `
   }
 `
 const Button = styled.button `
-  border:1px solid blue;
-  background:blue;
+  border: none;
+  background-color: lightgray;
   color:white;
-  cursor: pointer
+  cursor: pointer;
 `
 
 const Form = styled.div `
@@ -28,10 +28,12 @@ const Form = styled.div `
   flex-direction:row;
   border:1px solid grey;
   padding:2px;
+  margin-top: 15px;
 `
 
 const FlexContainer = styled.div `
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
   `

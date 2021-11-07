@@ -8,9 +8,13 @@ type Props = {
 }
 
 const ImgMovie = styled.img `
-    height: 200px;
+    height: 250px;
+    width: 180px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  @media only screen and (min-width:480px){
     width: 200px;
-    padding: 10px;
+  }
   `
 
 function Poster(props:Props){

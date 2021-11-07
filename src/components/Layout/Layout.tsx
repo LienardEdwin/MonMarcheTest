@@ -15,7 +15,7 @@ const Header = styled.div `
 `
 
 const Text = styled.h1 `
-  
+  color: #FFFF
 `
 
 const BackButton = styled.button `
