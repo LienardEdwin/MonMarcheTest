@@ -47,19 +47,32 @@ const CheckBox = styled.input`
   }
 `;
 
+const CheckBoxContainer = styled.div `
+  display: flex;
+`
+
 function Toggle({ themeToggler }: ThemeTogglerProps){
 
   return(
-    <CheckBoxWrapper>
-      <CheckBox
-        id="checkbox"
-        type="checkbox"
-        onClick={themeToggler}
-        onChange={() => false}
-        checked={window.localStorage.getItem('theme') === 'light'}
-      />
-      <CheckBoxLabel htmlFor="checkbox" />
-    </CheckBoxWrapper>
+    <CheckBoxContainer>
+      <div>
+        <span className="material-icons">nightlight</span>
+      </div>
+      <CheckBoxWrapper>
+        <CheckBox
+          id="checkbox"
+          type="checkbox"
+          onClick={themeToggler}
+          onChange={() => false}
+          checked={window.localStorage.getItem('theme') === 'light'}
+        />
+        <CheckBoxLabel htmlFor="checkbox" />
+      </CheckBoxWrapper>
+      <div>
+        <span className="material-icons">light_mode</span>
+      </div>
+    </CheckBoxContainer>
+
   )
 }
 
