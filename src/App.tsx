@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import './assets/App.css';
 import Layout from "./components/Layout/Layout";
 import { getFilmsFromApiWithSearchedText, getFilmsByPopularity } from './API/TMDBApi'
 import styled from 'styled-components'
