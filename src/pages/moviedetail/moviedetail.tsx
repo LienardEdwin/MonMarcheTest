@@ -7,13 +7,24 @@ import {Movie} from '../../types/Movie'
 
 const MainContainer = styled.div `
   display: flex;
+  margin-top: 20px;
+  @media only screen and (min-width:321px) and (max-width:1024px)
+  {
+    flex-direction: column;
+    text-align: center;
+  }
 `
 
-const DescriptionContainer = styled.div `
-
+const MovieTitle = styled.h2 `
+  margin: 20px;
 `
-const PosterContainer = styled.div `
 
+const MovieRating = styled.p `
+  margin: 20px;
+`
+
+const MovieDescription = styled(MovieRating) `
+  text-align: justify;
 `
 
 export default function MovieDetail(){
@@ -32,18 +43,15 @@ export default function MovieDetail(){
   }
 
   return movie ?(
-    <>
-      <MainContainer>
-        <DescriptionContainer>
-          <p>{movie.title}</p>
-          <p>{movie.overview}</p>
-          <p>{movie.vote_average} / 10</p>
-        </DescriptionContainer>
-        <PosterContainer>
-          <Poster data={movie}/>
-        </PosterContainer>
-        <PosterContainer/>
-      </MainContainer>
-    </>
+    <MainContainer>
+      <div>
+        <MovieTitle>{movie.title}</MovieTitle>
+        <MovieDescription>{movie.overview}</MovieDescription>
+        <MovieRating>{movie.vote_average} / 10</MovieRating>
+      </div>
+      <div>
+        <Poster data={movie}/>
+      </div>
+    </MainContainer>
   ) : null
 }

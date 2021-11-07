@@ -32,11 +32,11 @@ const Form = styled.div `
 `
 
 const FlexContainer = styled.div `
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-  `
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+`
 
 function Home(){
   const [movies, setMovies] = useState<Movies[]>([])
@@ -75,7 +75,7 @@ function Home(){
   return(
     <>
       <Form>
-        <TextInput onChange={handleTextInput} value={textInput} placeholder={'Chercher ici'}/>
+        <TextInput onChange={handleTextInput} value={textInput} placeholder={'Search'}/>
         <Button onClick={clearTextInput}>
           <span className="material-icons">close</span>
         </Button>

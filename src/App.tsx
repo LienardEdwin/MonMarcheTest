@@ -20,7 +20,7 @@ const ChildrenContainer = styled.div `
 `
 
 type Props= {
-  children: ReactNode | ReactChildren
+  children?: ReactNode | ReactChildren
 }
 
 function App(props:Props) {

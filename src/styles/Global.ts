@@ -21,20 +21,20 @@ const globalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+    font-family: 'Roboto', sans-serif;
   }
   #root{
     width: 100%;
   }
   body  {
-    -webkit-font-smoothing: antialiased;
     margin: 0 auto;
     background-color: ${({ theme }: GlobalThemeProps) => theme.background};
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  h1 {
-    font-size: 3.375rem;
+  h2{
+    color: ${({ theme }: GlobalThemeProps) => theme.text};
   }
   p{
     color: ${({ theme }: GlobalThemeProps) => theme.text};
