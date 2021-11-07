@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ThemeTogglerProps} from '../../types/Theme'
 
 const CheckBoxWrapper = styled.div`
   position: relative;
@@ -46,10 +47,17 @@ const CheckBox = styled.input`
   }
 `;
 
-function Toggle(){
+function Toggle({ themeToggler }: ThemeTogglerProps){
+
   return(
     <CheckBoxWrapper>
-      <CheckBox id="checkbox" type="checkbox" />
+      <CheckBox
+        id="checkbox"
+        type="checkbox"
+        onClick={themeToggler}
+        onChange={() => false}
+        checked={window.localStorage.getItem('theme') === 'light'}
+      />
       <CheckBoxLabel htmlFor="checkbox" />
     </CheckBoxWrapper>
   )

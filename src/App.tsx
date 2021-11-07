@@ -1,68 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import './assets/App.css';
+import React, {ReactChildren, ReactNode} from 'react';
 import Layout from "./components/Layout/Layout";
-import { getFilmsFromApiWithSearchedText, getFilmsByPopularity } from './API/TMDBApi'
-import styled from 'styled-components'
-import Poster from "./components/Poster/Poster"
+import {ThemeProvider} from 'styled-components'
+import GlobalStyle from './styles/Global';
+import ThemeContext from './contexts/ThemeContext';
+import { lightTheme, darkTheme } from './styles/Themes';
+import useThemeMode from './hooks/useThemeMode';
 
-type Movies = {
-  id: number,
-  poster_path: string
-  title: string
+type Props= {
+  children: ReactNode | ReactChildren
 }
 
-const TextInput = styled.input `
-    width: 50%;
-  `
-
-const FlexContainer = styled.div `
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  `
-
-function App() {
-  const [movies, setMovies] = useState<Movies[]>([])
-  const [textInput, setTextInput] = useState('')
-
-  useEffect(() => {
-    loadFilms()
-  }, [])
-
-  useEffect(() =>{
-    if(textInput.length === 0){
-      loadFilms()
-    }else{
-      loadFilmByText()
-    }
-  },[textInput])
-
-  function loadFilms() {
-    getFilmsByPopularity().then(data => setMovies(data.results));
-  }
-
-  function handleTextInput(e: React.ChangeEvent<HTMLInputElement>){
-    setTextInput(e.target.value)
-  }
-
-  function loadFilmByText(){
-    if (textInput.length > 0) {
-      getFilmsFromApiWithSearchedText(textInput).then(data => setMovies(data.results))
-    }
-  }
+function App(props:Props) {
+  const {children} = props
+  const { theme, themeToggler } = useThemeMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   return (
-    <div className="App">
-      <Layout/>
-      <TextInput onChange={handleTextInput} value={textInput} placeholder={'Chercher ici'}/>
-      <FlexContainer>
-        {
-          movies.map((res:Movies) =>(
-            <Poster data={res}/>
-          ))
-        }
-      </FlexContainer>
-    </div>
+    <ThemeContext>
+      <ThemeProvider theme={themeMode}>
+        <GlobalStyle/>
+        <Layout themeToggler={themeToggler}/>
+        {children}
+      </ThemeProvider>
+    </ThemeContext>
+
   );
 }
 

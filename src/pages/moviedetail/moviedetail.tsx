@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import { useParams  } from "react-router-dom";
 import {getFilmById} from '../../API/TMDBApi'
-import Layout from "../../components/Layout/Layout";
 import styled from 'styled-components'
 import Poster from '../../components/Poster/Poster'
 import {Movie} from '../../types/Movie'
@@ -21,6 +20,7 @@ export default function MovieDetail(){
   const params =  useParams()
   const [movie, setMovie] = useState<Movie | undefined>()
 
+
   useEffect(() =>{
     loadMovieById()
   }, [])
@@ -33,7 +33,6 @@ export default function MovieDetail(){
 
   return movie ?(
     <>
-      <Layout/>
       <MainContainer>
         <DescriptionContainer>
           <p>{movie.title}</p>
