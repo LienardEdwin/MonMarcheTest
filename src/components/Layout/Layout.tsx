@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom"
 import Toggle from '../../components/Toggle/Toggle'
 import {ThemeTogglerProps} from '../../types/Theme'
-import {FunctionComponent, ReactChild, ReactChildren} from "react";
+import { useLocation } from 'react-router-dom'
+import {useState} from "react";
 
 const Header = styled.div `
   background-color: #60A5FA;
@@ -18,7 +19,11 @@ const Text = styled.h1 `
 `
 
 const BackButton = styled.button `
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `
+
 const TitleContainer = styled.div `
   
 `
@@ -30,13 +35,19 @@ const ContainerButton = styled.div `
 `
 
 function Layout({themeToggler}: ThemeTogglerProps){
+  const location = useLocation()
+
   return(
     <>
       <Header>
         <ContainerButton>
-          <Link to={'/'}>
-            <BackButton>Retour</BackButton>
-          </Link>
+          {
+            location.pathname !== '/' && <Link to={'/'}>
+              <BackButton>
+                <span className="material-icons">arrow_back</span>
+              </BackButton>
+            </Link>
+          }
         </ContainerButton>
         <TitleContainer>
           <Text>Movies</Text>
