@@ -10,8 +10,25 @@ type Movies = {
 }
 
 const TextInput = styled.input `
-    width: 50%;
-  `
+  flex-grow:2;
+  border:none;
+  &:focus{
+    outline: none;
+  }
+`
+const Button = styled.button `
+  border:1px solid blue;
+  background:blue;
+  color:white;
+  cursor: pointer
+`
+
+const Form = styled.div `
+  display:flex;
+  flex-direction:row;
+  border:1px solid grey;
+  padding:2px;
+`
 
 const FlexContainer = styled.div `
     display: flex;
@@ -49,9 +66,18 @@ function Home(){
     }
   }
 
+  function clearTextInput(){
+    setTextInput('')
+  }
+
   return(
     <>
-      <TextInput onChange={handleTextInput} value={textInput} placeholder={'Chercher ici'}/>
+      <Form>
+        <TextInput onChange={handleTextInput} value={textInput} placeholder={'Chercher ici'}/>
+        <Button onClick={clearTextInput}>
+          <span className="material-icons">close</span>
+        </Button>
+      </Form>
       <FlexContainer>
         {
           movies.map((res:Movies, index) =>(
